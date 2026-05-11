@@ -1,2 +1,150 @@
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, sans-serif; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   AlaeDev Design System — CSS Variables
+   Dark first. Light via [data-theme="light"] on <html>.
+   ========================================================= */
+
+:root {
+  --bg-0: #0B0B0D;
+  --bg-1: #111114;
+  --bg-2: #16161B;
+  --bg-3: #1D1D23;
+
+  --line:        #26262C;
+  --line-2:      #34343C;
+  --line-strong: #5A5A66;
+
+  --fg-0: #EDEDEC;
+  --fg-1: #B6B6B2;
+  --fg-2: #7E7E7B;
+  --fg-3: #4E4E4B;
+
+  --accent:      #7CFFB2;
+  --accent-soft: rgba(124, 255, 178, 0.12);
+  --accent-line: rgba(124, 255, 178, 0.45);
+
+  --warm:      #F0C674;
+  --warm-soft: rgba(240, 198, 116, 0.12);
+  --warm-line: rgba(240, 198, 116, 0.45);
+
+  --danger:      #F26B6B;
+  --danger-soft: rgba(242, 107, 107, 0.12);
+}
+
+[data-theme="light"] {
+  --bg-0: #F5F5F3;
+  --bg-1: #FFFFFF;
+  --bg-2: #ECECEA;
+  --bg-3: #E2E2DF;
+
+  --line:        #D9D9D5;
+  --line-2:      #BFBFBA;
+  --line-strong: #6B6B66;
+
+  --fg-0: #0B0B0D;
+  --fg-1: #3A3A38;
+  --fg-2: #6B6B68;
+  --fg-3: #9D9D99;
+
+  --accent:      #00875A;
+  --accent-soft: rgba(0, 135, 90, 0.10);
+  --accent-line: rgba(0, 135, 90, 0.50);
+
+  --warm:      #B97A0E;
+  --warm-soft: rgba(185, 122, 14, 0.10);
+  --warm-line: rgba(185, 122, 14, 0.45);
+}
+
+/* =========================================================
+   Base Reset & Globals
+   ========================================================= */
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: #0B0B0D;
+  }
+
+  [data-theme="light"] {
+    color-scheme: light;
+    background-color: #F5F5F3;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-0);
+    color: var(--fg-0);
+    font-family: var(--font-geist), 'Geist', ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(124, 255, 178, 0.25);
+    color: #EDEDEC;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--fg-0);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
+}
+
+/* =========================================================
+   Component Utilities
+   ========================================================= */
+
+@layer utilities {
+  /* Blinking block caret */
+  .caret {
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    background: var(--accent);
+    vertical-align: -0.1em;
+    margin-left: 0.08em;
+    animation: blink 1s steps(1) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .caret { animation: none; }
+  }
+
+  /* Hero dot grid */
+  .dot-grid {
+    background-image: radial-gradient(circle, var(--line) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Hairline section divider */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--line);
+  }
+
+  /* Scrollbar styling */
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: var(--bg-1); }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 2px; }
+}
