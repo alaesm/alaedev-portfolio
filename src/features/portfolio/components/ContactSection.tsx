@@ -1,4 +1,5 @@
 import { CheckCircle, Send, Loader2 } from 'lucide-react';
+import { Reveal } from '@/shared/animations/Reveal';
 import { SectionHeader } from '@/shared/components/ui/SectionHeader';
 import { cn } from '@/shared/lib/cn';
 import { useContactForm } from '../hooks/useContactForm';
@@ -46,7 +47,7 @@ export function ContactSection() {
           command="open transmission.socket"
         />
 
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-20">
+        <Reveal className="grid md:grid-cols-2 gap-10 lg:gap-20">
           {/* Left — copy */}
           <div className="space-y-6">
             <p className="text-f1 text-base leading-relaxed">
@@ -167,7 +168,7 @@ export function ContactSection() {
               </form>
             )}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { Reveal } from '@/shared/animations/Reveal';
 import { SectionHeader } from '@/shared/components/ui/SectionHeader';
 import { TechBadge } from '@/shared/components/ui/TechBadge';
 import { StatusBadge } from '@/shared/components/ui/StatusBadge';
@@ -22,11 +23,11 @@ export function ExperienceSection() {
         {isError   && <ErrorState message="Could not load experience." />}
 
         {!isLoading && !isError && experience && (
-          <div className="space-y-0">
+          <Reveal className="space-y-0">
             {experience.map((item, idx) => (
               <div
                 key={item.id}
-                className="relative border border-ln bg-s1 p-6 md:p-8 hover:bg-s2 transition-colors duration-base"
+                className="relative border border-ln bg-s1 p-6 md:p-8 hover:bg-s2 motion-safe:transition-colors motion-safe:duration-base"
                 style={{ marginTop: idx > 0 ? '-1px' : 0 }}
               >
                 {/* Header row */}
@@ -75,7 +76,7 @@ export function ExperienceSection() {
                 )}
               </div>
             ))}
-          </div>
+          </Reveal>
         )}
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { Reveal } from '@/shared/animations/Reveal';
 import { SectionHeader } from '@/shared/components/ui/SectionHeader';
 import { ErrorState } from '@/shared/components/ui/ErrorState';
 import { ProfileSkeleton } from '@/shared/components/ui/LoadingSkeleton';
@@ -28,7 +29,7 @@ export function AboutSection() {
         {isError   && <ErrorState message="Could not load profile." />}
 
         {!isLoading && !isError && (
-          <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+          <Reveal className="grid md:grid-cols-2 gap-10 lg:gap-16">
             {/* Metadata table — terminal file output */}
             <div className="border border-ln bg-s1 rounded-sm overflow-hidden">
               <div className="px-4 py-2.5 border-b border-ln bg-s2 flex items-center gap-2">
@@ -87,7 +88,7 @@ export function AboutSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         )}
       </div>
     </section>

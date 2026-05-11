@@ -1,3 +1,4 @@
+import { Reveal } from '@/shared/animations/Reveal';
 import { SectionHeader } from '@/shared/components/ui/SectionHeader';
 import { SectionSkeleton } from '@/shared/components/ui/LoadingSkeleton';
 import { ErrorState } from '@/shared/components/ui/ErrorState';
@@ -19,7 +20,7 @@ export function TestimonialsSection() {
         {isError   && <ErrorState message="Could not load testimonials." />}
 
         {!isLoading && !isError && testimonials && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Reveal className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {testimonials.map((item) => (
               <div key={item.id} className="border border-ln bg-s1 p-6 rounded-sm flex flex-col">
                 {/* Client info */}
@@ -50,7 +51,7 @@ export function TestimonialsSection() {
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         )}
       </div>
     </section>

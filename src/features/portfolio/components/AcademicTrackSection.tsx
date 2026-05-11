@@ -1,3 +1,4 @@
+import { Reveal } from '@/shared/animations/Reveal';
 import { SectionHeader } from '@/shared/components/ui/SectionHeader';
 import { StatusBadge } from '@/shared/components/ui/StatusBadge';
 import { SectionSkeleton } from '@/shared/components/ui/LoadingSkeleton';
@@ -21,7 +22,7 @@ export function AcademicTrackSection() {
         {isError   && <ErrorState message="Could not load education data." />}
 
         {!isLoading && !isError && education && (
-          <div className="grid md:grid-cols-2 gap-6">
+          <Reveal className="grid md:grid-cols-2 gap-6">
             {/* Completed degree */}
             {education.map((item) => (
               <div key={item.id} className="border border-amber/30 bg-amber/5 p-6 rounded-sm">
@@ -95,7 +96,7 @@ export function AcademicTrackSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         )}
       </div>
     </section>

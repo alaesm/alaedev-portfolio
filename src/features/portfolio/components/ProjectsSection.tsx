@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowUpRight, Lock } from 'lucide-react';
+import { Reveal } from '@/shared/animations/Reveal';
 import { SectionHeader } from '@/shared/components/ui/SectionHeader';
 import { StatusBadge } from '@/shared/components/ui/StatusBadge';
 import { TechBadge } from '@/shared/components/ui/TechBadge';
@@ -32,7 +33,8 @@ function ProjectCard({ project, index, onOpenDetail }: ProjectCardProps) {
   return (
     <div
       className={cn(
-        'group relative border bg-s1 p-6 hover:border-ln2 hover:bg-s2 transition-all duration-base rounded-sm flex flex-col',
+        'group relative border bg-s1 p-6 rounded-sm flex flex-col motion-safe:transition-all motion-safe:duration-base',
+        'hover:border-ln2 hover:bg-s2',
         project.featured ? 'border-mint/35 shadow-[inset_0_0_0_1px_rgba(124,255,178,0.08)]' : 'border-ln',
       )}
     >
@@ -144,7 +146,7 @@ export function ProjectsSection() {
             {projects.length === 0 ? (
               <p className="font-mono text-sm text-f3">// no projects found</p>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Reveal className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {projects.map((project, idx) => (
                   <ProjectCard
                     key={project.id}
@@ -153,7 +155,7 @@ export function ProjectsSection() {
                     onOpenDetail={() => setDetailProject(project)}
                   />
                 ))}
-              </div>
+              </Reveal>
             )}
           </>
         )}

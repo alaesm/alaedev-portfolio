@@ -1,3 +1,4 @@
+import { Reveal } from '@/shared/animations/Reveal';
 import { SectionHeader } from '@/shared/components/ui/SectionHeader';
 import { TechBadge } from '@/shared/components/ui/TechBadge';
 import { SectionSkeleton } from '@/shared/components/ui/LoadingSkeleton';
@@ -20,7 +21,7 @@ export function TechStackSection() {
         {isError   && <ErrorState message="Could not load skills." />}
 
         {!isLoading && !isError && skills && (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-ln border border-ln rounded-sm overflow-hidden">
+          <Reveal className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-ln border border-ln rounded-sm overflow-hidden">
             {skills.map((group, idx) => (
               <div key={group.id} className="bg-s0 p-6 hover:bg-s1 transition-colors duration-base">
                 <div className="flex items-center gap-3 mb-4">
@@ -38,7 +39,7 @@ export function TechStackSection() {
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         )}
       </div>
     </section>

@@ -110,6 +110,17 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@keyframes blink-frame {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* =========================================================
    Component Utilities
    ========================================================= */
@@ -123,7 +134,7 @@
     background: var(--accent);
     vertical-align: -0.1em;
     margin-left: 0.08em;
-    animation: blink 1s steps(1) infinite;
+    animation: blink-frame 1s steps(1) infinite;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -147,4 +158,45 @@
   .scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
   .scrollbar-thin::-webkit-scrollbar-track { background: var(--bg-1); }
   .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 2px; }
+
+  /* Scroll-triggered fade + lift — JS toggles `.reveal-motion--visible` */
+  .reveal-motion {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.52s cubic-bezier(0.2, 0, 0, 1),
+      transform 0.52s cubic-bezier(0.2, 0, 0, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-motion--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hero phased badge stagger (opacity only) */
+  .hero-badge-slot {
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+      opacity 0.42s cubic-bezier(0.2, 0, 0, 1),
+      transform 0.42s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .hero-badge-slot--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-motion {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      will-change: auto;
+    }
+    .hero-badge-slot {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
 }
